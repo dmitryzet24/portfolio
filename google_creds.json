@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "sage-mind-482318-t9",
+  "private_key_id": "7841c41434caadcd9d7ac6d9081548c3346c6810",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQDVo5GvtAxZxBPd\nAxfw5KLXfbLuTf4kMXAHfK9EmzWpW1tGP9xZGRLbqelG1ax8FzBPKHiUZWk4n2LD\nqrNrAZ/4OSLLPeBnvfkej3ILvLigIeilXgpSXwqko3J5tTemHwWQ2fzcxj6xcvPO\ngZ3yS1P5ck/eZto8IhOFIajC4TR9pTQMmqZr4TIxxjVzUEqkjDcA80g9djZk6bPT\nql/3J3T/ObS/ByfLp4Rh8kBKUXaJ/D27g/F1wuy/AXGqDdDVyapZZbRHLW9br88E\nrWPx8mRkNo3WrxQ9Q+cHWHztWOYONc6ClB1LMeaDal44Z5Ee76BKhDT7i1VAiCiG\nQJJJfYfLAgMBAAECggEAEzehEnQ+613SVTGPpPR4594/iv6RCDugn2Vj24DRFU7j\nQv2mzVnBphv+oLr2LQnMJ3kbstDJSkKfS7wkyR3FGgfQGjnF4EJPRArho2Fyg7tv\nhfb6AeoMUKSZo43ditMd8qdPmG+f+OGL20OYxZ012VzWOmQRTxKk1t26pIar7H4W\ndgqa/aMfiTDyrZb+CELiO8ZOPO4SVuCSEEu8x0RU1mazQ1jiRAij6ingrhipoKfj\nEyzGphPmkBhxyiOKz7BZDIVEf2viqnmltt5h77qbbD1gBhPdKK4VdDnw+cr3Rr4m\n17bkCcp297lqux5ARg655t5y2I7s5XrzRTMuBhGFoQKBgQD6KKLPdJ0PPW3wsA2Z\nc0yrXZwAbvFqGlfL3bUUJYN+giqOHgF7KT3vjrYF+14O7xujzRO36rKsQDRbuM1j\nfugKqCQu+Eg5uSrAfay8EnK0n0QuLFgT/8NH6Y3UDLH8musaiXFTn6gVv07qXaXJ\nSmVc5w8ukeAmc9wknz/sG+2l1wKBgQDaoKFToz4Bjjj5Mm0FpK9D/iDTJdeLxbx9\nysR5cPH8ETYOmqiJFxUhXbxdZaWz+dxOImqEhwby0QoTtggJkHt0rmBKf3rrFZDB\nhVSxIF6mnP7nR6Xk6S+wSCqGZGObzSwHMvALDl6ZvzEyjfkuyVzKSN2fYcZ1ymuk\n2MqpdXWHLQKBgQCLKo4gkURK1SbTTm3SX0VY1DPUPeQJ3evX21hAg/oaJ/napDC4\nvqHZInB69XNHJZgf0RfWKjgKAZHfMPj6EACw5Qd0JeWwTyXMfl3ZJv4vI6c/dKXv\nQkr2N6USQZnG6LxAQBQOrHRK3OnfEggH6l5nh5d3lem4Gp5utTVPed4EcwKBgQCS\n26ni29oQA3BD/Np9GvXcj32POHFE46vNOAKorPTv5MPSJZOmmwnHowagGmKnteSF\n29p/cZB6VW8WdIWLnzE+3M+z21Q/S/oz9JNCdEMAWp9jzp4iWX1+RcvDAPZkNvsn\nTtEuLBXh4ytyESpcgkjBXRb6NByzDSknz7S7BjrPdQKBgQCByRrB92Jj3mD1ftuQ\ni6S505XTaVJH7PCaZDudUz/kIQC9isw1kYebW7E3qDg+CWeKtXVWLJ+B+P1j3P6F\ntc6LSw6Fd1HlRedH/eyfLW3iTO4PVndyHHFjqM+g4a1GHYBpRCyKHruMt8keZkVR\nCQ7wFtLXmh9Wv9snyfc8IZT0zw==\n-----END PRIVATE KEY-----\n",
+  "client_email": "bigquery-fetcher@sage-mind-482318-t9.iam.gserviceaccount.com",
+  "client_id": "116750564648488961402",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/bigquery-fetcher%40sage-mind-482318-t9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

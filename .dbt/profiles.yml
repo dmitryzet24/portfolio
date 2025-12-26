@@ -1,0 +1,12 @@
+google_store_project:
+  outputs:
+    dev:
+      type: postgres
+      host: db
+      user: "{{ env_var('DBT_USER') }}"
+      password: "{{ env_var('DBT_PASSWORD') }}"
+      port: 5432
+      database: google_shop_data
+      schema: analytics
+      threads: 1
+  target: dev
