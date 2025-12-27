@@ -4,3 +4,4 @@ venv/
 .idea/
 target/
 dbt_modules/# created by virtualenv automatically
+google_creds.json
