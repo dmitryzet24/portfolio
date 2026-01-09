@@ -7,7 +7,7 @@ with transactions as(
 select
     country,
     count(visit_id) as total_transactions,
-    sum(transactions) as total_tramsactions,
+    sum(transactions) as total_transactions,
     round(sum(revenue_usd)::numeric, 2) as total_revenue,
     round(avg(revenue_usd)::numeric, 2) as avg_check
 from transactions

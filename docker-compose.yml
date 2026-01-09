@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  #Database that imitates Redshiift
+  db:
+    image: postgres:15
+    container_name: ecom_db
+    command: -c listen_addresses='*'
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  dbt:
+    image: ghcr.io/dbt-labs/dbt-postgres:1.5.0
+    container_name: dbt_worker
+    tty: true
+    volumes:
+      - ./dbt_project:/usr/app/dbt_project
+      - ./.dbt/profiles.yml:/root/.dbt/profiles.yml
+    environment:
+      DBT_USER: ${POSTGRES_USER}
+      DBT_PASSWORD: ${POSTGRES_PASSWORD}
+    entrypoint: /bin/bash # to prevent turning off immediately
+
+  airflow:
+    image: apache/airflow:2.7.1-python3.9
+    container_name: airflow
+    env_file:
+      - .env
+    environment:
+      - AIRFLOW__DATABASE__SQL_ALCHEMY_CONN=postgresql+psycopg2://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
+      - AIRFLOW__CORE__EXECUTOR=LocalExecutor
+      - AIRFLOW__CORE__LOAD_EXAMPLES=False
+      - AIRFLOW_DB_UPGRADE=true
+      - AIRFLOW_WWW_USER_USERNAME=admin
+      - AIRFLOW_WWW_USER_PASSWORD=admin
+      - _PIP_ADDITIONAL_REQUIREMENTS=dbt-postgres google-cloud-bigquery pandas-gbq sqlalchemy python-dotenv
+    volumes:
+      - ./dags:/opt/airflow/dags
+      - ./extract_load:/opt/airflow/extract_load
+      - ./dbt_project:/opt/airflow/dbt_project
+      - ./.dbt:/opt/airflow/.dbt
+    ports:
+      - "8081:8080"
+      - "8082:8082"
+    command: standalone
+    depends_on:
+      - db
+
+
+volumes:
+  postgres_data:
+
+

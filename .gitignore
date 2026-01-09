@@ -4,4 +4,4 @@ venv/
 .idea/
 target/
 dbt_modules/# created by virtualenv automatically
-google_creds.json
+airflow/extract_load/google_creds.json

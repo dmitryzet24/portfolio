@@ -1,12 +1,12 @@
 import os
 import pandas as pd
+from sqlalchemy import create_engine, text
 from google.cloud import bigquery
-from sqlalchemy import create_engine
 from dotenv import load_dotenv
 
 # Environmental variables
 load_dotenv()
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "google_creds.json"
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/opt/airflow/extract_load/google_creds.json"
 
 def extract_and_load():
     client = bigquery.Client()
@@ -23,9 +23,10 @@ def extract_and_load():
         totals.transactions as transactions,
         totals.transactionRevenue / 1000000 as revenue_usd
         FROM
-            `bigquery-public-data.google_analytics_sample.ga_sessions_20170801`
+            `bigquery-public-data.google_analytics_sample.ga_sessions_*`
         WHERE
-            totals.transactions IS NOT NULL
+            _TABLE_SUFFIX BETWEEN '20160801' AND '20180830'
+            AND totals.transactions IS NOT NULL
         LIMIT 1000;
     """
     print("Connecting to BigQuery...")
@@ -42,13 +43,23 @@ def extract_and_load():
     db = os.getenv("POSTGRES_DB")
 
     #SQLAlchemy engine
-    engine = create_engine(f"postgresql://{user}:{password}@localhost:5433/{db}")
+    engine = create_engine(f"postgresql://{user}:{password}@db:5432/{db}")
+    with engine.connect() as conn:
+        trans = conn.begin()
+        try:
+            print("Truncating data...")
+            conn.execute(text("TRUNCATE TABLE raw_google_transactions"))
+            trans.commit()
+        except:
+            trans.rollback()
+            raise
+
     print("Loading data to Postgres (RAW data layer)...")
     try:
-        df.to_sql("raw_google_transactions", engine, if_exists="replace", index=False)
+        df.to_sql("raw_google_transactions", engine, if_exists="append", index=False)
         print("Data successfully loaded to table 'raw_google_transactions'")
     except Exception as e:
-        print("Error loading data to Postgres: {e} ")
+        print(f"Error loading data to Postgres: {e} ")
 
 if __name__ ==  "__main__":
     extract_and_load()

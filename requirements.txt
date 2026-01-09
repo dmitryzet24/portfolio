@@ -1,0 +1,7 @@
+google-cloud-bigquery
+pandas
+pandas-gbq
+sqlalchemy
+psycopg2-binary
+python-dotenv
+dbt-postgres

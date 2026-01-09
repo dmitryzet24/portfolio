@@ -1,0 +1,18 @@
+
+version: 2
+
+modes:
+  - name: fct_countr_performance
+    description: "Agregated data Revenue by Sales"
+    columns:
+      - name: country
+        description: "Country name"
+        data tests:
+          - unique
+          - not_null
+
+      - name: total_revenue
+        description: "Total revenue in USD"
+        data_tests:
+          - not_null
+
